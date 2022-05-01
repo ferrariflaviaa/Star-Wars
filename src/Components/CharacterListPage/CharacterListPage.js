@@ -1,7 +1,7 @@
-import React, { useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import api from "../../Services/api";
 import { Persona } from "./style";
-
+import { Link } from "react-router-dom";
 export default function CharacterListPage() {
   const [CharacterList, setCharacterList] = useState([]);
 
@@ -24,8 +24,12 @@ export default function CharacterListPage() {
 
   return (
     <div>
-      {CharacterList.map((item) => {
-        return <Persona key={item.name + item.birth_year}>{item.name}</Persona>;
+      {CharacterList.map((item, index) => {
+        return (
+          <Link to={`/details/${index + 1}`}  key={index}>
+            <Persona>{item.name}</Persona>
+          </Link>
+        );
       })}
     </div>
   );
