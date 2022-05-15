@@ -27,7 +27,7 @@ function SelectedDungeonsDetails() {
 
     return (
         <Container>
-            <Link to="/searchDungeons" >
+            <Link to="/searchLocals" >
                 <Button>Voltar</Button>
             </Link>
             <h1>Planeta selecionado</h1>
