@@ -25,7 +25,7 @@ export default function CharacterListPage() {
 
   return (
     <Container>
-      <Link to="/searchDungeons" >
+      <Link to="/searchLocals" >
         <Button>Pesquisar Locais</Button>
       </Link>
 

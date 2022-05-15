@@ -4,27 +4,27 @@ import api from '../../Services/api';
 import { Persona } from '../CharacterListPage/style';
 import {Container, Title, Button, Input} from "./style";
 
-function SearchDungeons() {
+function SearchLocals() {
 
-    const [filteredDungeons, setFilteredDungeons] = useState([]);
+    const [filteredLocals, setFilteredLocals] = useState([]);
     const [searchValue, setSeearchValue] = useState('');
 
-    async function loadDungeons() {
+    async function loadLocals() {
         await api.get('/places')
             .then((response) => {
                 console.log(response.data.data);
-                setFilteredDungeons(response.data.data);
+                setFilteredLocals(response.data.data);
             })
             .catch((err) => {
                 console.log(err);
             })
     }
 
-    async function filterloadDungeons() {
+    async function filterloadLocals() {
         await api.get(`/places?name=${searchValue}`)
             .then((response) => {
                 console.log(response.data.data);
-                setFilteredDungeons(response.data.data);
+                setFilteredLocals(response.data.data);
             })
             .catch((err) => {
                 console.log(err);
@@ -32,14 +32,14 @@ function SearchDungeons() {
     }
 
     useEffect(() => {
-        loadDungeons();
+        loadLocals();
     }, [])
 
     useEffect(() => {
         if (searchValue === '') {
-            loadDungeons();
+            loadLocals();
         } else {
-            filterloadDungeons();
+            filterloadLocals();
         }
     }, [searchValue])
 
@@ -49,10 +49,10 @@ function SearchDungeons() {
                 <Button name="myButton" >Voltar</Button>
             </Link>
             <Input value={searchValue} onChange={event => setSeearchValue(event.target.value)} />
-            <Title>Dungeons</Title>
-            {filteredDungeons.map((item, index) => {
+            <Title>Locais</Title>
+            {filteredLocals.map((item, index) => {
                 return (
-                    <Link to={`/searchDungeons/${item.id}`} key={index}>
+                    <Link to={`/searchLocals/${item.id}`} key={index}>
                         <Persona>{item.name}</Persona>
                     </Link>
                 );
@@ -61,4 +61,4 @@ function SearchDungeons() {
     );
 }
 
-export default SearchDungeons;
+export default SearchLocals;
