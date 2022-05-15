@@ -25,9 +25,13 @@ export default function CharacterListPage() {
 
   return (
     <div>
+      <Link to="/searchDungeons" >
+        <button>Pesquisar Locais</button>
+      </Link>
+
       {CharacterList.map((item, index) => {
         return (
-          <Link to={`/${item.id}`}  key={index}>
+          <Link to={`/${item.id}`} key={index}>
             {console.log(item.id)}
             <Persona>{item.name}</Persona>
           </Link>

@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import api from "../../Services/api";
 import { Link } from "react-router-dom";
 
-function SelectedPlanetDetails() {
+function SelectedDungeonsDetails() {
     const [planetDetails, setPlanetDetails] = useState();
     const params = useParams();
     const planetId = params.id;
@@ -26,20 +26,18 @@ function SelectedPlanetDetails() {
 
     return (
         <div>
-            <Link to="/searchPlanets" >
+            <Link to="/searchDungeons" >
                 <button>Voltar</button>
             </Link>
             <h1>Planeta selecionado</h1>
             {planetDetails && (
                 <div>
                     <h1>Nome: {planetDetails.name === '' ? 'Não informado' : planetDetails.name}</h1>
-                    <h1>Clima: {planetDetails.climate === '' ? 'Não informado' : planetDetails.climate}</h1>
-                    <h1>População: {planetDetails.population === '' ? 'Não informado' : planetDetails.population}</h1>
-                    <h1>Terreno: {planetDetails.terrain === '' ? 'Não informado' : planetDetails.terrain}</h1>
+                    <h1>Descrição: {planetDetails.description === null ? 'Não informado' : planetDetails.description}</h1>
                 </div>
             )}
         </div>
     );
 }
 
-export default SelectedPlanetDetails;
+export default SelectedDungeonsDetails;

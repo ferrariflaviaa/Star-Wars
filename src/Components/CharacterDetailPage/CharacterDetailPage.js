@@ -36,14 +36,9 @@ export default function CharacterDetailPage() {
       {CharacterDetails && (
         <div>
           <h1>Nome: {CharacterDetails.name}</h1>
-          <h1>Ano de Nascimento: {CharacterDetails.birth_year}</h1>
-          <h1>Criado: {CharacterDetails.created}</h1>
-          <h1>Editado: {CharacterDetails.edited}</h1>
-          <h1>Cor dos olhos: {CharacterDetails.eye_color}</h1>
-          <h1>Altura: {CharacterDetails.height}</h1>
-          <h1>Cor dos olhos: {CharacterDetails.eye_color}</h1>
-          <h1>Gênero: {CharacterDetails.gender === 'n/a' ? 'Não informado' : CharacterDetails.gender} </h1>
-          <h1>Cor do cabelo: {CharacterDetails.hair_color === 'n/a' ? 'Não informado' : CharacterDetails.hair_color} </h1>
+          <h1>Descrição: {CharacterDetails.description}</h1>
+          <h1>Genero: {CharacterDetails.gender === null ? 'Não informado' : CharacterDetails.gender}</h1>
+          <h1>Raça: {CharacterDetails.race === null ? 'Não informado' : CharacterDetails.race}</h1>
         </div>
       )}
 

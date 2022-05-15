@@ -4,8 +4,8 @@ import "./index.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import CharacterListPage from "./Components/CharacterListPage/CharacterListPage";
 import CharacterDetailPage from "./Components/CharacterDetailPage/CharacterDetailPage";
-import SearchPlanets from "./Components/SearchPlanets/SearchPlanets";
-import SelectedPlanetDetails from "./Components/SelectedPlanetDetails/SelectedPlanetDetails";
+import SearchDungeons from "./Components/SearchDungeons/SearchDungeons";
+import SelectedDungeonsDetails from "./Components/SelectedDungeonsDetails/SelectedDungeonsDetails";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -13,8 +13,8 @@ root.render(
     <Routes>
       <Route path="/" element={<CharacterListPage/>} />
       <Route path="/:id" element={<CharacterDetailPage/>} />
-      <Route path="/searchPlanets" element={<SearchPlanets/>} />
-      <Route path="/searchPlanets/:id" element={<SelectedPlanetDetails/>} />
+      <Route path="/searchDungeons" element={<SearchDungeons/>} />
+      <Route path="/searchDungeons/:id" element={<SelectedDungeonsDetails/>} />
     </Routes>
   </BrowserRouter>
 );
