@@ -5,29 +5,16 @@ import { Link } from "react-router-dom";
 
 
 export default function CharacterDetailPage() {
-  const [CharacterDetails, setCharacterDetails] = useState();  
-  const [planet, setPlanet] = useState();  
+  const [CharacterDetails, setCharacterDetails] = useState(); 
   const params = useParams();
   const peopleId = params.id;
 
   async function getCharacterDetails() {
     await api
-      .get(`/people/${peopleId}`)
+      .get(`/characters/${peopleId}`)
       .then((response) => {
-        // console.log(response.data);
-        setCharacterDetails(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
-
-  async function getHomeworldDetails(planetId) {
-    await api
-      .get(`/planets/${planetId}`)
-      .then((response) => {
-        // console.log(response.data);
-        setPlanet(response.data);
+        console.log(response);
+        setCharacterDetails(response.data.data);
       })
       .catch((error) => {
         console.log(error);
@@ -37,14 +24,6 @@ export default function CharacterDetailPage() {
   useEffect(() => {
     getCharacterDetails();
   }, []);
-
-  //Verifica se ele não esta vazio o estado do planeta.
-  useEffect(() => {
-    if(CharacterDetails){
-      getHomeworldDetails(CharacterDetails.homeworld.substr(30));
-      // console.log(CharacterDetails.homeworld.substr(30));
-    }
-  }, [CharacterDetails]);
 
   
   return (
@@ -65,9 +44,6 @@ export default function CharacterDetailPage() {
           <h1>Cor dos olhos: {CharacterDetails.eye_color}</h1>
           <h1>Gênero: {CharacterDetails.gender === 'n/a' ? 'Não informado' : CharacterDetails.gender} </h1>
           <h1>Cor do cabelo: {CharacterDetails.hair_color === 'n/a' ? 'Não informado' : CharacterDetails.hair_color} </h1>
-          {planet && (
-            <h1>Cidade natal: {planet.name}</h1>
-          )}
         </div>
       )}
 

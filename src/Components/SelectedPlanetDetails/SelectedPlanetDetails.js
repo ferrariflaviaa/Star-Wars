@@ -10,10 +10,10 @@ function SelectedPlanetDetails() {
 
     async function getPlanetDetails() {
         await api
-            .get(`/planets/${planetId}`)
+            .get(`/places/${planetId}`)
             .then((response) => {
-                console.log(response.data);
-                setPlanetDetails(response.data);
+                console.log(response.data.data);
+                setPlanetDetails(response.data.data);
             })
             .catch((error) => {
                 console.log(error);

@@ -9,10 +9,10 @@ export default function CharacterListPage() {
   //FUNÇÃO PARA REQUISIÇÃO: ELA LOGA OS RESULTADOS E SALVA ELE DENTRO DE UM ESTADO TIPO DE VETOR.
   async function getCharacterList() {
     await api
-      .get("/people")
+      .get("/characters")
       .then((data) => {
-        console.log(data.data.results);
-        setCharacterList(data.data.results);
+        console.log(data.data.data);
+        setCharacterList(data.data.data);
       })
       .catch((error) => {
         console.log(error);
@@ -27,7 +27,8 @@ export default function CharacterListPage() {
     <div>
       {CharacterList.map((item, index) => {
         return (
-          <Link to={`/${index + 1}`}  key={index}>
+          <Link to={`/${item.id}`}  key={index}>
+            {console.log(item.id)}
             <Persona>{item.name}</Persona>
           </Link>
         );

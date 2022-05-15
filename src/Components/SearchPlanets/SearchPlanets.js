@@ -6,11 +6,24 @@ import { Persona } from '../CharacterListPage/style';
 function SearchPlanets() {
 
     const [filteredPlanets, setFilteredPlantes] = useState([]);
+    const [searchValue, setSeearchValue] = useState('');
 
     async function loadPlanets() {
-        await api.get('/planets/')
+        await api.get('/places')
             .then((response) => {
-                setFilteredPlantes(response.data.results);
+                console.log(response.data.data);
+                setFilteredPlantes(response.data.data);
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }
+
+    async function filterloadDungeons() {
+        await api.get(`/places?name=${searchValue}`)
+            .then((response) => {
+                console.log(response.data.data);
+                setFilteredPlantes(response.data.data);
             })
             .catch((err) => {
                 console.log(err);
@@ -20,13 +33,22 @@ function SearchPlanets() {
     useEffect(() => {
         loadPlanets();
     }, [])
+    
+    useEffect(() => {
+        if(searchValue === ''){
+            loadPlanets();
+        }else{
+            filterloadDungeons();
+        }
+    }, [searchValue])
 
     return (
         <div>
-            <h1>Planetas</h1>
+            <input value={searchValue} onChange={event => setSeearchValue(event.target.value)}/>
+            <h1>Dungeons</h1>
             {filteredPlanets.map((item, index) => {
                 return (
-                    <Link to={`/searchPlanets/${index + 1}`} key={index}>
+                    <Link to={`/searchPlanets/${item.id}`} key={index}>
                         <Persona>{item.name}</Persona>
                     </Link>
                 );
