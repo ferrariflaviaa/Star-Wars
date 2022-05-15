@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import api from "../../Services/api";
-import { Persona } from "./style";
+import { Persona, Container, Button } from "./style";
 import { Link } from "react-router-dom";
 
 export default function CharacterListPage() {
@@ -24,9 +24,9 @@ export default function CharacterListPage() {
   }, []);
 
   return (
-    <div>
+    <Container>
       <Link to="/searchDungeons" >
-        <button>Pesquisar Locais</button>
+        <Button>Pesquisar Locais</Button>
       </Link>
 
       {CharacterList.map((item, index) => {
@@ -37,6 +37,6 @@ export default function CharacterListPage() {
           </Link>
         );
       })}
-    </div>
+    </Container>
   );
 }

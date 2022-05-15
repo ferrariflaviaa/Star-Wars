@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import api from "../../Services/api";
 import { Link } from "react-router-dom";
+import {Container, Button, Card} from "./style"
 
 function SelectedDungeonsDetails() {
     const [planetDetails, setPlanetDetails] = useState();
@@ -25,18 +26,18 @@ function SelectedDungeonsDetails() {
     }, []);
 
     return (
-        <div>
+        <Container>
             <Link to="/searchDungeons" >
-                <button>Voltar</button>
+                <Button>Voltar</Button>
             </Link>
             <h1>Planeta selecionado</h1>
             {planetDetails && (
-                <div>
+                <Card>
                     <h1>Nome: {planetDetails.name === '' ? 'Não informado' : planetDetails.name}</h1>
                     <h1>Descrição: {planetDetails.description === null ? 'Não informado' : planetDetails.description}</h1>
-                </div>
+                </Card>
             )}
-        </div>
+        </Container>
     );
 }
 

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import api from "../../Services/api";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
-
+import { Card, Label, Container, Title } from "./style";
 
 export default function CharacterDetailPage() {
   const [CharacterDetails, setCharacterDetails] = useState(); 
@@ -27,22 +27,22 @@ export default function CharacterDetailPage() {
 
   
   return (
-    <div>
-      <h1>Detalhes</h1>
+    <Container>
+      <Title>Detalhes</Title>
       <Link to="/" >
         <button type="submit" name="myButton" >Voltar</button>
       </Link>
 
       {CharacterDetails && (
-        <div>
-          <h1>Nome: {CharacterDetails.name}</h1>
-          <h1>Descrição: {CharacterDetails.description}</h1>
-          <h1>Genero: {CharacterDetails.gender === null ? 'Não informado' : CharacterDetails.gender}</h1>
-          <h1>Raça: {CharacterDetails.race === null ? 'Não informado' : CharacterDetails.race}</h1>
-        </div>
+        <Card>
+          <Label>Nome: {CharacterDetails.name}</Label>
+          <Label>Descrição: {CharacterDetails.description}</Label>
+          <Label>Genero: {CharacterDetails.gender === null ? 'Não informado' : CharacterDetails.gender}</Label>
+          <Label>Raça: {CharacterDetails.race === null ? 'Não informado' : CharacterDetails.race}</Label>
+        </Card>
       )}
 
       
-    </div>
+    </Container>
   );
 }

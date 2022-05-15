@@ -6,9 +6,6 @@ export const Container = styled.div `
     justify-content: center;
     flex-direction: column;
 `
-export const Title = styled.div`
-    font-size: 40px;
-`
 
 export const Button = styled.button`
     border: 0px;
@@ -18,8 +15,7 @@ export const Button = styled.button`
     margin-top: 10px;
 
 `
-export const Input = styled.input`
-    width: 450px;
-    height: 15px;
+export const Card = styled.div`
+    width: 1300px;
 
 `
